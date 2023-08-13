@@ -45,20 +45,21 @@ class FractionServiceSpec < Test::Unit::TestCase
   ]
   def test_valid_command_valid
     VALID_COMMANDS.each do |valid_command|
-      assert_equal(true, FractionService.valid_command?(valid_command))
+      assert_equal([], FractionService.validate_command(valid_command))
     end
   end
 
   INVALID_COMMANDS = [
-    "1/2 *",
-    "1/2 * 3&3/4 =",
-    "1/2 * 3//4",
-    "1/ * 3/4",
-    "1/2 ! 3&3/4"
+    ["1/2 *", ["The command has 2 elements instead of 3."]],
+    ["1/2 * 3&3/4 =", ["The command has 4 elements instead of 3."]],
+    ["1/ * 3/4", ["The '1/' number is invalid."]],
+    ["1/2 * 3//4", ["The '3//4' number is invalid."]],
+    ["1/2 ! 3&3/4", ["The '!' operator is invalid."]],
+    ["1/ ! 3//4", ["The '1/' number is invalid.", "The '!' operator is invalid.", "The '3//4' number is invalid."]]
   ]
   def test_valid_command_invalid
-    INVALID_COMMANDS.each do |invalid_command|
-      assert_equal(false, FractionService.valid_command?(invalid_command))
+    INVALID_COMMANDS.each do |invalid_command, error|
+      assert_equal(error, FractionService.validate_command(invalid_command))
     end
   end
 

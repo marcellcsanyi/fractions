@@ -35,17 +35,29 @@ class FractionService
     elsif whole == 0
       fraction.to_s
     else
-      whole.to_s + "&" + fraction.to_s
+      "#{whole.to_s}&#{fraction.to_s}"
     end
   end
 
-  def self.valid_command?(command)
+  def self.validate_command(command)
     splitted_command = command.split(" ").delete_if(&:empty?)
+    errors = []
 
-    splitted_command.length == 3 &&
-    OPERATOR_REGEX.match?(splitted_command[1]) &&
-    valid_number(splitted_command[0]) &&
-    valid_number(splitted_command[2])
+    if splitted_command.length != 3
+      errors.push("The command has #{splitted_command.length} elements instead of 3.")
+    else
+      if !valid_number(splitted_command[0])
+        errors.push("The '#{splitted_command[0]}' number is invalid.")
+      end
+      if !OPERATOR_REGEX.match?(splitted_command[1])
+        errors.push("The '#{splitted_command[1]}' operator is invalid.")
+      end
+      if !valid_number(splitted_command[2])
+        errors.push("The '#{splitted_command[2]}' number is invalid.")
+      end
+    end
+    
+    errors
   end
 
   def self.get_left_number(command)

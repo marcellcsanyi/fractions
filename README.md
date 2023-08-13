@@ -33,3 +33,7 @@ For running a specific test, please do the following:
 3. Use the following command `ruby <desired_test>.rb`
 
 # Improvement ideas
+- Write E2E tests
+- Implement translation
+- Create more meaningful error messages
+- Use dependency injection [depends on later purposes of the app]
