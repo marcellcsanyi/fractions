@@ -1,21 +1,20 @@
-require_relative "services/fraction_service.rb"
+# frozen_string_literal: true
 
-command = ""
+require_relative 'models/fraction'
 
-while (command.downcase.strip != "exit") do
-  print "? "
+while command.downcase.strip != 'exit'
+  print '? '
   command = gets
-  errors = FractionService.validate_command(command)
 
-  if errors.empty?
-    left = FractionService.convert(FractionService.get_left_number(command))
-    right = FractionService.convert(FractionService.get_right_number(command))
-    operator = FractionService.get_operator(command)
+  break if command.downcase.strip == 'exit'
 
-    result = left.send(operator, right)
+  fraction = Fraction.new(command)
 
-    puts "= #{FractionService.convert_back(result)}"
-  elsif command.downcase.strip != "exit"
-    puts "! #{errors.join(" ")}"
+  if fraction.valid?
+    fraction.solve
+
+    puts "= #{fraction.result.to_string}"
+  else
+    puts "! #{fraction.errors.full_messages.join(' ')}"
   end
 end

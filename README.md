@@ -14,14 +14,21 @@ until user types "exit".
 "3&1/4", "-1&7/8".
 - Improper fractions, whole numbers, and negative numbers are allowed as operands.
 
-# How to run the app
+# Prerequisites
+
+1. Install rbenv: `brew install rbenv`
+2. Add the following line to your profile file `eval "$(rbenv init -)"`
+3. With rbenv install the right ruby version: `rbenv install`
+4. Install gems: `bundle install`
+
+# Run the app
 
 1. Navigate to the `app` folder
 2. Use the following command `ruby main.rb`
 3. Write commands
 4. For closing the app, use the `exit` command
 
-# How to run the tests
+# Run the tests
 
 For running all tests, please do the following:
 1. Navigate to the `tests` folder
@@ -31,6 +38,9 @@ For running a specific test, please do the following:
 1. Navigate to the `tests` folder
 2. Navigate to the folder of the desired test
 3. Use the following command `ruby <desired_test>.rb`
+
+# Useful commands
+- Check linting: `rubocop`  
 
 # Improvement ideas
 - Write E2E tests
