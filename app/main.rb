@@ -16,8 +16,8 @@ while command.downcase.strip != 'exit'
       fraction.solve
 
       puts "= #{fraction.result.to_string}"
-    rescue StandardError => e
-      puts "! #{e.message}"
+    rescue StandardError
+      puts '! Something went wrong.'
     end
   else
     puts "! #{fraction.errors.full_messages.join(' ')}"

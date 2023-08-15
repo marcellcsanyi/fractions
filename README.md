@@ -14,7 +14,7 @@ until user types "exit".
 "3&1/4", "-1&7/8".
 - Improper fractions, whole numbers, and negative numbers are allowed as operands.
 
-# Prerequisites
+# Prerequisites [MAC]
 
 1. Install rbenv: `brew install rbenv`
 2. Add the following line to your profile file: `eval "$(rbenv init -)"`
@@ -44,4 +44,5 @@ For running a specific test, please do the following:
 
 # Improvement ideas
 - Handle exponential expressions
+- Validate for arithmetic errors
 - Handle longer expressions with more operations
