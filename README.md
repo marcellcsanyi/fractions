@@ -17,8 +17,8 @@ until user types "exit".
 # Prerequisites
 
 1. Install rbenv: `brew install rbenv`
-2. Add the following line to your profile file `eval "$(rbenv init -)"`
-3. With rbenv install the right ruby version: `rbenv install`
+2. Add the following line to your profile file: `eval "$(rbenv init -)"`
+3. With rbenv, install the right ruby version: `rbenv install`
 4. Install gems: `bundle install`
 
 # Run the app
@@ -43,7 +43,5 @@ For running a specific test, please do the following:
 - Check linting: `rubocop`  
 
 # Improvement ideas
-- Write E2E tests
-- Implement translation
-- Create more meaningful error messages
-- Use dependency injection [depends on later purposes of the app]
+- Handle exponential expressions
+- Handle longer expressions with more operations

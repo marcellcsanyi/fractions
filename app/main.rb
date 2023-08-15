@@ -2,6 +2,7 @@
 
 require_relative 'models/fraction'
 
+command = ''
 while command.downcase.strip != 'exit'
   print '? '
   command = gets
@@ -11,9 +12,13 @@ while command.downcase.strip != 'exit'
   fraction = Fraction.new(command)
 
   if fraction.valid?
-    fraction.solve
+    begin
+      fraction.solve
 
-    puts "= #{fraction.result.to_string}"
+      puts "= #{fraction.result.to_string}"
+    rescue StandardError => e
+      puts "! #{e.message}"
+    end
   else
     puts "! #{fraction.errors.full_messages.join(' ')}"
   end
